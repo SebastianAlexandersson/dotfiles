@@ -51,13 +51,13 @@ let g:rainbow_active = 1
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-tsserver',
-	\ 'coc-html',
 	\ 'coc-css',
 	\ 'coc-json',
 	\ 'es7-react-js-snippets', 
 	\ 'coc-pairs',
 	\ 'coc-highlight',
 	\ 'coc-eslint',
+	\ 'coc-emmet'
   \ ]
 
 inoremap <silent><expr> <TAB>
