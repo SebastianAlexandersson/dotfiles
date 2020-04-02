@@ -1,5 +1,5 @@
-syntax enable
-
+syntax on 
+set re=0
 filetype on
 
 if (has("termguicolors"))
@@ -10,6 +10,7 @@ endif
 set number
 
 "Tabsize settings
+set expandtab
 set sts=2
 set ts=2
 set sw=2
@@ -33,17 +34,20 @@ command! W :w
 call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
-Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'Yggdroot/indentLine'
 Plug 'arcticicestudio/nord-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
-colorscheme nord
+colorscheme nord 
 
 let g:rainbow_active = 1
 
@@ -53,7 +57,6 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-css',
 	\ 'coc-json',
-	\ 'es7-react-js-snippets', 
 	\ 'coc-pairs',
 	\ 'coc-highlight',
 	\ 'coc-eslint',
@@ -81,3 +84,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 let g:indentLine_first_char = '┊'
 let g:indentLine_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
+
+"NerdTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+map <F4> :NERDTreeToggle<CR>
+
+"FZF
+nnoremap <silent> <leader><space> :Files<CR>
