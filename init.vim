@@ -7,21 +7,6 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-"Nord colorscheme syntax highlight color overrides
-augroup nord-theme-overrides
-  autocmd!
-  autocmd ColorScheme nord highlight typescriptImport guifg=#81A1C1
-  autocmd ColorScheme nord highlight typescriptVariable guifg=#81A1C1
-  autocmd ColorScheme nord highlight typescriptUnaryOp guifg=#81A1C1
-  autocmd ColorScheme nord highlight typescriptBinaryOp guifg=#81A1C1
-  autocmd ColorScheme nord highlight typescriptOperator guifg=#81A1C1
-  autocmd ColorScheme nord highlight typescriptAssign guifg=#81A1C1
-  autocmd ColorScheme nord highlight typescriptGlobalPromiseDot guifg=#89C0D0
-  autocmd ColorScheme nord highlight typescriptDotNotation guifg=#89C0D0
-  autocmd ColorScheme nord highlight typescriptExceptions guifg=#B48EAD
-  autocmd ColorScheme nord highlight typescriptExport guifg=#B48EAD
-augroup END
-
 if (has("termguicolors"))
  set termguicolors
 endif
@@ -57,33 +42,27 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Yggdroot/indentLine'
-Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dracula/vim'
-Plug 'preservim/nerdtree'
-Plug 'cocopon/iceberg.vim'
-Plug 'morhetz/gruvbox'
-Plug 'pangloss/vim-javascript'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'arcticicestudio/nord-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 call plug#end()
 
 colorscheme nord
 
-let g:rainbow_active = 1
-
 " nvim-coc
 let g:coc_global_extensions = [
-	\ 'coc-snippets',
-	\ 'coc-tsserver',
-	\ 'coc-css',
-	\ 'coc-json',
-	\ 'coc-pairs',
-	\ 'coc-highlight',
-	\ 'coc-eslint',
-	\ 'coc-emmet'
+  \ 'coc-snippets',
+  \ 'coc-tsserver',
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-pairs',
+  \ 'coc-highlight',
+  \ 'coc-eslint',
+  \ 'coc-emmet'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -103,15 +82,7 @@ imap <S-space> <Plug>(coc-snippets-expand)
 "Create new line and indent on enter while inside parenthesis
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" indentLine
-let g:indentLine_first_char = '┊'
-let g:indentLine_char = '┊'
-let g:indentLine_showFirstIndentLevel = 1
-
-"NerdTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-map <F4> :NERDTreeToggle<CR>
-
 "FZF
 nnoremap <silent> <leader><space> :Files<CR>
+
+set clipboard+=unnamedplus
