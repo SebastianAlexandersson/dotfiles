@@ -141,5 +141,9 @@ ex ()
 # better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 source /usr/share/nvm/init-nvm.sh
+export FZF_DEFAULT_COMMAND='fd --type f'
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools/bin:$PATH
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 export EDITOR=/usr/bin/nvim
-export SUDO_EDITOR=/usr/bin/nvim
