@@ -7,7 +7,9 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-if (has("termguicolors"))
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
  set termguicolors
 endif
 
@@ -38,7 +40,7 @@ command! W :w
 
 call plug#begin()
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
@@ -59,7 +61,6 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-json',
   \ 'coc-pairs',
-  \ 'coc-highlight',
   \ 'coc-eslint',
   \ 'coc-emmet',
   \ 'coc-styled-components'
