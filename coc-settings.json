@@ -1,17 +1,3 @@
 {
-	"typescript.showUnused": true,
-	"typescript.suggest.paths": true,
-	"tsserver.enableJavascript": true,
-	"typescript.suggest.enabled": true,
-	"typescript.format.enabled": true,
-	"typescript.suggest.autoImports": true,
-	"typescript.updateImportsOnFileMove.enable": true,
-	"javascript.showUnused": true,
-	"javascript.suggest.names": true,
-	"javascript.suggest.enabled": true,
-	"javascript.suggest.paths": true,
-	"javascript.suggest.autoImports": true,
-	"javascript.format.enabled": true,
-	"javascript.updateImportsOnFileMove.enable": true,
-  "eslint.autoFixOnSave": true
+  "coc.preferences.formatOnType": true
 }
