@@ -1,16 +1,15 @@
-syntax on 
+syntax on
 set re=0
 filetype on
+
 
 "Find syntax highlight group that work under cursor matches
 map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
- set termguicolors
+if has('termguicolors')
+  set termguicolors
 endif
 
 "Show line numbers
@@ -42,18 +41,30 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'arcticicestudio/nord-vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 call plug#end()
 
 colorscheme nord
+
+let g:nvcode_termcolors=256
+let g:airline_theme='minimalist'
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
 
 " nvim-coc
 let g:coc_global_extensions = [
@@ -61,10 +72,10 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-json',
-  \ 'coc-pairs',
   \ 'coc-eslint',
   \ 'coc-emmet',
-  \ 'coc-styled-components'
+  \ 'coc-styled-components',
+  \ 'coc-pairs'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -94,15 +105,6 @@ if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
