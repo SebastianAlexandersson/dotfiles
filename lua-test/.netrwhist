@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/sebbe/apps/aws-docker-test/api/.git'
+let g:netrw_dirhist_1='/Users/sebbe/bilprospekt_repos/bilp3/src/components/leads_report_widget/leads_report_dashboard'
+let g:netrw_dirhist_0='/Users/sebbe/bilprospekt_repos/bilp3/src/components/leads_report_widget'
+let g:netrw_dirhist_9='/Users/sebbe/bilprospekt_repos/bilprospekt-admin/node_modules/nodemon'
+let g:netrw_dirhist_8='/Users/sebbe/bilprospekt_repos/bilprospekt-admin/node_modules/bookshelf'
+let g:netrw_dirhist_7='/Users/sebbe'
+let g:netrw_dirhist_6='/'
+let g:netrw_dirhist_5='/Users'
+let g:netrw_dirhist_4='/Users/sebbe'
+let g:netrw_dirhist_3='/Users/sebbe/bilprospekt_repos'

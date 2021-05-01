@@ -46,7 +46,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
@@ -72,10 +71,9 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-json',
-  \ 'coc-eslint',
+  "\ 'coc-eslint',
   \ 'coc-emmet',
-  \ 'coc-styled-components',
-  \ 'coc-pairs'
+  \ 'coc-pairs',
   \ ]
 
 inoremap <silent><expr> <TAB>
